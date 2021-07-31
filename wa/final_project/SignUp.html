@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/SignUp.css">
+    <title>Sign Up</title>
+</head>
+<body>
+    <div class="center">
+        <h1>Đăng ký</h1>
+        <form method="POST">
+            <div class="txt_field">
+                <input type="text" required id="user">
+                <span></span>
+                <label>User</label>
+            </div>
+            <div class="txt_field">
+                <input type="password" required id="pass">
+                <span></span>
+                <label>Password</label>
+            </div>
+            <div class="txt_field">
+                <input type="text" required id="name">
+                <span></span>
+                <label>Name</label>
+            </div>
+        </form>
+        <button id="signUp">Đăng ký</button>
+
+        <div class="login_link">
+            Đã có tài khoản? <a href="./SignIn.html">Đăng nhập</a>
+        </div>
+
+   </div>
+
+    <script>
+        let usersList = ["Admin"];
+        let passList = ["Admin"];
+        let nameList = ["Admin"];
+
+        if(localStorage.getItem("usersList") === null) {
+            localStorage.setItem("usersList", JSON.stringify(usersList));
+        } else {
+            usersList = JSON.parse(localStorage.getItem("usersList"));
+        }
+        
+        if(localStorage.getItem("passList") === null) {
+            localStorage.setItem("passList", JSON.stringify(passList));
+        } else {
+            passList = JSON.parse(localStorage.getItem("passList"));
+        }
+        
+        if(localStorage.getItem("nameList") === null) {
+            localStorage.setItem("nameList", JSON.stringify(nameList));
+        } else {
+            nameList = JSON.parse(localStorage.getItem("nameList"));
+        }
+        
+        let btnSignUp = document.getElementById("signUp");
+        btnSignUp.addEventListener('click', signUp);
+        function signUp() {
+            let user = document.getElementById("user").value;
+            let pass = document.getElementById("pass").value;
+            let name = document.getElementById("name").value;
+
+            if( user === "" || pass === "" || name === "" ) {
+                alert("Không được để trống");
+            } else {
+                for ( let i = 0; i < usersList.length; i++) {
+                    if (user === usersList[i]) {
+                        alert("Tài khoản này đã tồn tại");
+                        document.getElementById("user").value = "";
+                        document.getElementById("pass").value = "";
+                        document.getElementById("name").value = "";
+                        return;
+                    }
+                }
+
+                if (pass.length < 6) {
+                    alert("Mật khẩu quá ngắn");
+                    document.getElementById("user").value = "";
+                    document.getElementById("pass").value = "";
+                    document.getElementById("name").value = "";
+                    return;
+                }
+
+                usersList.push(user);
+                passList.push(pass);
+                nameList.push(name);
+
+                localStorage.setItem("usersList", JSON.stringify(usersList));
+                localStorage.setItem("passList", JSON.stringify(passList));
+                localStorage.setItem("nameList", JSON.stringify(nameList));
+
+                alert("Đăng ký thành công");
+                
+                window.location.href = "./SignIn.html";
+
+            }
+        }
+    </script>
+</body>
+</html>
