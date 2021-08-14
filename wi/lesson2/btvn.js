@@ -48,7 +48,7 @@
 //          alert('...')
 //      }
 //      else {
-//         for (let i = a; i <= b; i++) {
+//         for (let i = a; i < b; i++) {
 //             aTOb.push(arr[i])
 //         } 
 //         console.log(aTOb)
@@ -76,7 +76,16 @@
 //  }
 //  filterRange(arr, a, b)
 
-// Câu b e ko bt làm ạ
+// Câu b)
+// let arr = [2,4,6,8,10,12]
+// let a = prompt('Nhập vị trí đầu')
+// let b = prompt('Nhập vị trí cuối')
+// let aTOb = [...arr]
+
+// let result = aTOb.filter((e) => {
+//    return e > a && e < b
+// })
+// console.log(result)
 
 // Bài 6
 // let student = [
@@ -135,14 +144,27 @@
 //     }
 // }
 //Câu d)
-// let d = student.map(tuoiMoi)
-// function tuoiMoi(d) {
-//     if (d.age == 11) {
-//         d.age += 4
+// let d = student.map((e) => {
+//     if (e.age == 11) {
+//         return e.age += 4
+//     } else {
+//         return e.age
 //     }
-// }
+// })
+
 // console.log(d)
 //Bài thêm
 // const array1 = ["hello", "bye", "world", "gia bao"];
-// const arr2 = array1.slice(0,3)
-// console.log(arr2); 
+// const arr2 = array1.map((e) => {
+//     return e.slice(0,3)
+// })
+// console.log(arr2);   
+// let arr = ["a", "b"];
+
+// arr.push(function() {
+//   alert( this );
+// })
+
+// arr[2]();
+// console.log(arr[2]);
+
