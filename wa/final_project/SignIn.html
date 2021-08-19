@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/SignIn.css">
+    <title>Sign In</title>
+</head>
+<body>
+    <div class="center">
+
+        <h1>Đăng nhập</h1>
+
+        <form method="POST">
+            <div class="txt_field">
+                <input type="text" required id="user">
+                <span></span>
+                <label>User</label>
+            </div>
+            <div class="txt_field">
+                <input type="password" required id="pass">
+                <span></span>
+                <label>Password</label>
+            </div>
+        </form>
+
+        <div class="pass">Forgot Password?</div>
+        <button id="signIn">Đăng nhập</button>
+        <div class="signup_link">
+            Chưa có tài khoản? <a href="./SignUp.html">Đăng ký</a>
+        </div>
+
+   </div>
+
+    <script>
+        let usersList = ["Admin"];
+        let passList = ["Admin"];
+
+        if(localStorage.getItem("usersList") === null) {
+            localStorage.setItem("usersList", JSON.stringify(usersList));
+        } else {
+            usersList = JSON.parse(localStorage.getItem("usersList"));
+        }
+        
+        if(localStorage.getItem("passList") === null) {
+            localStorage.setItem("passList", JSON.stringify(passList));
+        } else {
+            passList = JSON.parse(localStorage.getItem("passList"));
+        }
+        
+        let btnSignIn = document.getElementById("signIn");
+        btnSignIn.addEventListener('click', signIn);
+        function signIn() {
+            let user = document.getElementById("user").value;
+            let pass = document.getElementById("pass").value;
+
+            if( user === "" || pass === "" ) {
+                alert("Không được để trống");
+            } else {
+                for (let i = 0; i < usersList.length; i++) {
+                    if (user === usersList[i] && pass === passList[i]) {
+                        document.getElementById("user").value = "";
+                        document.getElementById("pass").value = "";
+                        alert("Đăng nhập thành công");    
+                        window.location.href = "./Home2.html";
+                        return;
+                    } 
+                }
+
+            }
+        }
+    </script>
+</body>
+</html>

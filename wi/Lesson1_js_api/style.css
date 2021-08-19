@@ -1,0 +1,53 @@
+.weather_name {
+    text-align: center;
+}
+
+.weather_container {
+    background: linear-gradient(to bottom,black 5%, darkblue 18%, blue 28%, rgb(19, 174, 226), rgb(41, 201, 255) 75%);
+    width: 400px;
+    height: 500px;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.weather_container img {
+    margin-top: 20px;
+    width: 150px;
+}
+
+.weather_container .line {
+    height: 2px;
+    margin: 20px;
+    background: lightgray;
+}
+
+.weather_container p:nth-child(4) {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.weather_container p:nth-child(5) {
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+#inputCityName input, #inputCityName button {
+    border: none;
+    padding: 10px;
+    border-radius: 16px;
+    margin-right: 5px;
+}
+
+#inputCityName button:hover {
+    background: lightgray;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.weather_container h1,
+.weather_container p:hover {
+    cursor:default;
+}
